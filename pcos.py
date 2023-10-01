@@ -17,8 +17,8 @@ def main():
 	st.sidebar.markdown("This is for changing the model parameters")
 	@st.cache(persist=True)
 	def load_data():
-		no_inf=pd.read_csv("C:/Users/dell/Documents/PCOS Prediction/no_inf.csv")
-		inf=pd.read_csv("C:/Users/dell/Documents/PCOS Prediction/inf.csv")
+		no_inf=pd.read_csv("no_inf.csv")
+		inf=pd.read_csv("inf.csv")
 		data = pd.merge(no_inf,inf, on='Patient File No.', suffixes={'','_y'},how='left')
 		data['Fast food (Y/N)'].fillna(data['Fast food (Y/N)'].median(),inplace=True)
 		data.drop(['PCOS (Y/N)_y','AMH(ng/mL)_y','Patient File No.','Unnamed: 42'],axis=1,inplace=True)
